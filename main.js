@@ -14,14 +14,21 @@ const users = [
 input.addEventListener("input", ()=>{
   const val = input.value.toLowerCase();
   
+  // if the search box is empty show nothing
+  if(val === ""){
+    resultContainer.innerHTML = "";
+    return;
+  }
+
   const searchresult = users.filter(user => {
     return user.name.toLowerCase().includes(val) || user.email.toLowerCase().includes(val);
   })
 
-  if(Object.keys(searchresult).length === 0){
+  if(searchresult.length === 0){
     resultContainer.textContent = "No Result Found";
     return;
   }
+  
   resultContainer.innerHTML = "";
 
   searchresult.forEach(user => {
