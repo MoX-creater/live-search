@@ -13,11 +13,15 @@ const users = [
 //display name and email on search 
 input.addEventListener("input", ()=>{
   const val = input.value.toLowerCase();
-
+  
   const searchresult = users.filter(user => {
     return user.name.toLowerCase().includes(val) || user.email.toLowerCase().includes(val);
   })
 
+  if(Object.keys(searchresult).length === 0){
+    resultContainer.textContent = "No Result Found";
+    return;
+  }
   resultContainer.innerHTML = "";
 
   searchresult.forEach(user => {
@@ -37,6 +41,6 @@ input.addEventListener("input", ()=>{
 
   });
     
-
+  
   console.log(searchresult);
 })
